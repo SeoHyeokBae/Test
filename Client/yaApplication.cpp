@@ -38,14 +38,21 @@ namespace ya
 		Time::Update();
 		Input::Update();
 		yaEllipse::Update();
-		//InvalidateRect(mHwnd, nullptr, true);
+		//InvalidateRect(mHwnd, nullptr, true); // ÀÜ»óÀº ¾Èº¸ÀÌ³ª ±ôºý°Å¸²
 	}
 
 	void Application::Render()
 	{
 		Time::Render(mHdc);
 		
+		HBRUSH OldBrush = (HBRUSH)SelectObject(mHdc, myBrush);
+		HPEN OldPen = (HPEN)SelectObject(mHdc, myPen);
+
 		yaEllipse::Render(mHdc);
 
+		SelectObject(mHdc, OldBrush);
+		SelectObject(mHdc, OldPen);
+		DeleteObject(myBrush);
+		DeleteObject(myPen);
 	}
 }

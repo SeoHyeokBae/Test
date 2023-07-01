@@ -20,8 +20,8 @@ namespace ya
 		HWND mHwnd;
 		HDC mHdc;
 
-		//Vector2 mPlayerPos;
-		//Vector2 dire;
+		HBRUSH myBrush = CreateSolidBrush(RGB(169, 169, 169));
+		HPEN myPen = CreatePen(PS_SOLID, 1, RGB(255, 255, 255));
 	};
 }
 

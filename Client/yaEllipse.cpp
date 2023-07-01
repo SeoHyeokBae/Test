@@ -13,27 +13,7 @@ namespace ya
 		Ball ball = {};
 		ball.mStartPos.x = 800.0f;
 		ball.mStartPos.y = 450.0f;
-		ball.dire.x = rand() % 3;
-		ball.dire.y = rand() % 3;
-
-		// 초기 방향 설정
-		if (ball.dire.x == 1)
-		{
-			ball.dire.x = 1;
-		}
-		else if (ball.dire.x == 2)
-		{
-			ball.dire.x = -1;
-		}
-
-		if (ball.dire.y == 1)
-		{
-			ball.dire.y = 1;
-		}
-		else if (ball.dire.y == 2)
-		{
-			ball.dire.y = -1;
-		}
+		ball.mAngle = rand() % 360; // 각도 방향 랜덤
 
 		mBall.push_back(ball);
 	}
@@ -53,8 +33,19 @@ namespace ya
 
 		for (int i = 0; i < idx; i++)
 		{
-			mBall[i].mMove.x += 100.0f * Time::DeltaTime() * mBall[i].dire.x;
-			mBall[i].mMove.y += 100.0f * Time::DeltaTime() * mBall[i].dire.y;
+			// 벽에 튕길시 각도변화 
+			if (mBall[i].mStartPos.y - BallScale + mBall[i].mMove.y < 0)
+				mBall[i].mAngle = (mBall[i].mAngle + (-2) * mBall[i].mAngle) % 360;
+			if (mBall[i].mStartPos.y + 3*BallScale + mBall[i].mMove.y > 900)
+				mBall[i].mAngle = (mBall[i].mAngle + (-2) * mBall[i].mAngle) % 360;
+			if (mBall[i].mStartPos.x - BallScale + mBall[i].mMove.x < 0)
+				mBall[i].mAngle = (mBall[i].mAngle + (-2) * (mBall[i].mAngle - 90)) % 360;
+			if (mBall[i].mStartPos.x + BallScale + mBall[i].mMove.x > 1600)
+				mBall[i].mAngle = (mBall[i].mAngle + (2) * (90 - mBall[i].mAngle)) % 360;
+			
+			
+			mBall[i].mMove.x += 300.0f * cos(mBall[i].mAngle * PI / 180) * Time::DeltaTime() ;
+			mBall[i].mMove.y += 300.0f * (-1)*sin(mBall[i].mAngle * PI / 180) * Time::DeltaTime() ;
 		}
 
 	}
@@ -64,12 +55,13 @@ namespace ya
 		for (int i = 0; i < idx; i++)
 		{
 			Ellipse(hdc,
-				mBall[i].mStartPos.x - 25 + mBall[i].mMove.x,
-				mBall[i].mStartPos.y - 25 + mBall[i].mMove.y,
-				mBall[i].mStartPos.x + 25 + mBall[i].mMove.x,
-				mBall[i].mStartPos.y + 25 + mBall[i].mMove.y);
+				mBall[i].mStartPos.x - BallScale + mBall[i].mMove.x,
+				mBall[i].mStartPos.y - BallScale + mBall[i].mMove.y,
+				mBall[i].mStartPos.x + BallScale + mBall[i].mMove.x,
+				mBall[i].mStartPos.y + BallScale + mBall[i].mMove.y);
 		}
 
 	}
+
 
 }
