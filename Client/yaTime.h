@@ -9,7 +9,8 @@ namespace ya
 	public:
 		static void Initailize();
 		static void Update();
-		static void Render(HDC hdc);
+		static void Render(HWND hwnd);
+		//static void Render(HDC hdc);
 		
 		__forceinline static float DeltaTime() { return mDeltaTime; }
 

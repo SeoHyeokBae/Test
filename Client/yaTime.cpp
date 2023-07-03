@@ -31,7 +31,7 @@ namespace ya
 
 	}
 
-	void Time::Render(HDC hdc)
+	void Time::Render(HWND hwnd) // (HDC hdc)
 	{
 		static float timeCheck = 0.0f;
 
@@ -43,8 +43,9 @@ namespace ya
 
 			swprintf_s(szFloat, 50, L"fps : %f , DT : %f", fps, mDeltaTime);
 			int strLen = wcsnlen_s(szFloat, 50);
+			SetWindowText(hwnd, szFloat);
 
-			TextOut(hdc, 10, 10, szFloat, strLen);
+			//TextOut(hdc, 10, 10, szFloat, strLen);
 
 			timeCheck = 0.0f;
 		}

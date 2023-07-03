@@ -68,7 +68,8 @@ namespace ya
 		// È­¸é clear 
 		Rectangle(mCpyDC, -1, -1, mResolution.x + 1, mResolution.y + 1);
 
-		Time::Render(mCpyDC);
+		Time::Render(mHwnd);
+		//Time::Render(mCpyDC);
 		
 		//HBRUSH OldBrush = (HBRUSH)SelectObject(mCpyDC, myBrush);
 		//HPEN OldPen = (HPEN)SelectObject(mCpyDC, myPen);
