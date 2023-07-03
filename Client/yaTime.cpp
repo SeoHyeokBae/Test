@@ -43,7 +43,8 @@ namespace ya
 
 			swprintf_s(szFloat, 50, L"fps : %f , DT : %f", fps, mDeltaTime);
 			int strLen = wcsnlen_s(szFloat, 50);
-			SetWindowText(hwnd, szFloat);
+			
+			SetWindowText(hwnd, szFloat); // 타이틀 창에 표시
 
 			//TextOut(hdc, 10, 10, szFloat, strLen);
 
