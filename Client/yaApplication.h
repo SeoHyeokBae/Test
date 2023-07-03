@@ -11,7 +11,7 @@ namespace ya
 		Application();
 		~Application();
 
-		void Initialize(HWND hwnd);
+		void Initialize(HWND hwnd, POINT _Resolution);
 		void Run();
 		void Update();
 		void Render();
@@ -19,9 +19,15 @@ namespace ya
 	private:
 		HWND mHwnd;
 		HDC mHdc;
+		POINT mResolution; // 윈도우 해상도
 
-		HBRUSH myBrush = CreateSolidBrush(RGB(169, 169, 169));
-		HPEN myPen = CreatePen(PS_SOLID, 1, RGB(255, 255, 255));
+		// 이중 버퍼링
+		HBITMAP mCpyhbit;
+		HDC mCpyDC;
+
+
+		//HBRUSH myBrush = CreateSolidBrush(RGB(0, 0, 0));
+		//HPEN myPen = CreatePen(PS_SOLID, 1, RGB(0, 0, 0));
 	};
 }
 

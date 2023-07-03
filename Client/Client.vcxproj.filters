@@ -25,6 +25,9 @@
     <Filter Include="Engine\Time">
       <UniqueIdentifier>{dc75b5f7-e943-4117-af22-20334b9d177c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Ball">
+      <UniqueIdentifier>{da123f8b-0054-426f-9387-2c4b4d2607ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -54,7 +57,9 @@
     <ClInclude Include="yaTime.h">
       <Filter>Engine\Time</Filter>
     </ClInclude>
-    <ClInclude Include="yaEllipse.h" />
+    <ClInclude Include="yaEllipse.h">
+      <Filter>Engine\Ball</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -80,6 +85,8 @@
     <ClCompile Include="yaTime.cpp">
       <Filter>Engine\Time</Filter>
     </ClCompile>
-    <ClCompile Include="yaEllipse.cpp" />
+    <ClCompile Include="yaEllipse.cpp">
+      <Filter>Engine\Ball</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

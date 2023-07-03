@@ -1,4 +1,5 @@
 #include "yaTime.h"
+#include "yaApplication.h"
 
 namespace ya
 {
@@ -25,6 +26,9 @@ namespace ya
 			
 		mDeltaTime = differenceFrequency / static_cast<float>(mCpuFrequency.QuadPart);
 		mPrevFrequency.QuadPart = mCurFrequency.QuadPart;
+
+		static float timeCheck = 0.0f;
+
 	}
 
 	void Time::Render(HDC hdc)
