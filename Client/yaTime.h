@@ -9,8 +9,8 @@ namespace ya
 	public:
 		static void Initailize();
 		static void Update();
-		static void Render(HWND hwnd);
-		//static void Render(HDC hdc);
+		//static void Render(HWND hwnd);
+		static void Render(HDC hdc);
 		
 		__forceinline static float DeltaTime() { return mDeltaTime; }
 
@@ -18,6 +18,10 @@ namespace ya
 		static LARGE_INTEGER mCpuFrequency;
 		static LARGE_INTEGER mPrevFrequency;
 		static LARGE_INTEGER mCurFrequency;
+
+		// Ãâ·Â¿ë
 		static float mDeltaTime;
+		static float Display_DT;
+		static float Display_fps;
 	};
 }
